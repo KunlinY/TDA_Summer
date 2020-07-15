@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amsxtra,amsthm,amssymb,makeidx,graphics,graphicx}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheoremstyle{citing}{3pt}{3pt}{\itshape}{0pt}{\bfseries}%
+{.}{ }{\thmnote{#3}}\theoremstyle{citing}\newtheorem*{varthm}{}
+
+\begin{document}
+
+\title{Tutorial on Topological Data Analysis}
+\author{Kunlin}
+\maketitle
+
+\section{Metric Topology}
+
+\subsection{Motivation}
+
+\textbf{Question: } How to do "\emph{smooth deformation}" of an object. 
+
+\begin{definition}
+    Smooth deformation will not change the shape of an object. 
+\end{definition}
+If we define a shape by counting the number of holes in the object\dots
+
+You cannot change a ball into a donut, because a ball has no holes a donut has one hole. 
+
+In TDA:
+\begin{itemize}
+    \item Start from a data set
+    \item Construct topological objects
+    \item Study their properties that are not changed by smooth deformation
+\end{itemize}
+
+Challenges: 
+\begin{itemize}
+    \item How to define shapes (number of holes)?
+    \item How to count holes when dimension $n=2,3,4,\cdots$
+\end{itemize}
+
+Idea: dimension reduction while maintaining homology. 
+
+\subsection{Open Sets}
+
+\begin{definition}
+    Let $(X,d)$ be a metric space. For each element $a \in X$ and each $r\in (0, \infty) \subseteq \mathbb{R}$, the \emph{open ball with a center $a$ and radius $r$} is the subset 
+    \begin{equation}
+        B_{a,r}=\{x\in X | d(a,x) < r\} \subseteq X
+    \end{equation}
+\end{definition}
+
+\begin{example}
+    Let $(X,d)$ be a metric space. If $r>0$, then 
+\begin{equation}
+    B_{a,r}=\{x\in X | d(a,x) < r\} \subseteq X
+\end{equation}
+is open. 
+\end{example}
+    
+\end{document}
