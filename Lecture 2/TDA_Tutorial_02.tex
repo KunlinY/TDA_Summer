@@ -60,5 +60,130 @@ Idea: dimension reduction while maintaining homology.
 \end{equation}
 is open. 
 \end{example}
+\noindent\emph{Solution. }
+If $y\in B(a,r)$, then 
+$\delta=r-d(a,y)>0$ and,
+whenever $d(z,y)<\delta$,
+the triangle inequality gives us
+\[d(a,z)\leq d(a,y)+d(y,z)<r\]
+so $z\in B(a,r)$. Thus $B(a,r)$ is open.
+
+\begin{theorem}
+    If $(X,d)$ is a metric space, then the following statements are true.
+
+(i) The empty set $\emptyset$ and the space $X$ are open.
+
+(ii) If $U_{\alpha}$ is open for all $\alpha\in A$, then $\bigcup_{\alpha\in A} U_{\alpha}$ is open. (In other words, the union of open sets is open.)
+
+(iii) If $U_{j}$ is open for all $1\leq j\leq n$, then $\bigcap_{j=1}^{n} U_{j}$ is open.
+\end{theorem}
+\begin{proof}
+    (i) Since there are no points $e$ in $\emptyset$, the statement
+\[x\in \emptyset\ \text{whenever}\ d(x,e)<1\]
+holds for all $e\in \emptyset$. Since every point $x$ belongs to $X$,
+the statement
+\[x\in X\ \text{whenever}\ d(x,e)<1\]
+holds for all $e\in X$.
+
+(ii) If $e\in \bigcup_{\alpha\in A} U_{\alpha}$, then we can find
+a particular $\alpha_{1}\in A$ with $e\in U_{\alpha_{1}}$.
+Since $U_{\alpha_{1}}$ is open, we can find a $\delta>0$
+such that
+\[x\in U_{\alpha_{1}}\ \text{whenever}\ d(x,e)<\delta.\]
+Since $U_{\alpha_{1}}\subseteq \bigcup_{\alpha\in A} U_{\alpha}$,
+\[x\in \bigcup_{\alpha\in A} U_{\alpha}  \text{whenever}\ d(x,e)<\delta.\]
+Thus $\bigcup_{\alpha\in A} U_{\alpha}$ is open.
+
+(iii) If $e\in \bigcap_{j=1}^{n} U_{j}$, then
+$e\in U_{j}$ for each $1\leq j\leq n$. Since
+$U_{j}$ is open, we can find a $\delta_{j}>0$
+such that
+\[x\in U_{j}\ \text{whenever}\ d(x,e)<\delta_{j}.\]
+Setting $\delta=\min_{1\leq j\leq n}\delta_{j}$, we
+have $\delta>0$ and
+\[x\in U_{j}\ \text{whenever}\ d(x,e)<\delta\]
+for all $1\leq j\leq n $. Thus
+\[x\in \bigcap_{j=1}^{n} U_{j}\ \text{whenever}\ d(x,e)<\delta\]
+and we have shown that $\bigcap_{j=1}^{n} U_{j}$ is open.
+\end{proof}
+
+\begin{example}
+    Here is an example of how property (iii) faiuls when we consider the intersection of an infinite family of open subsets. Let $X=\mathbb{R}$ with the Euclidean metric, $d(x,y)=|x-y|$, and let $U_i=(-\frac{1}{i},\frac{1}{i})$ for all $i>1$. Then, $\bigcap_{i=1}^\infty U_i=\{0\}$, which is not open. 
+\end{example}
+
+\begin{example}
+    If we work in ${\mathbb R}^{n}$ with the Euclidean metric, then the one point set $\{{\mathbf x}\}$ is not open.
+\end{example}
+\begin{proof}
+    Choose ${\mathbf e}\in{\mathbb R}^{n}$ with $\|{\mathbf e}\|_{2}=1$.
+(We could take ${\mathbf e}=(1,0,0,\ldots,0)$.) If $\delta>0$,
+then, setting ${\mathbf y}={\mathbf x}+(\delta/2){\mathbf e}$, we have
+$\|{\mathbf x}-{\mathbf y}\|_{2}<\delta$, 
+yet ${\mathbf y}\notin\{{\mathbf x}\}$.
+Thus $\{{\mathbf x}\}$ is not open.
+\end{proof}
+
+\subsection{Continuous functions between metric spaces}
+\begin{definition}
+    Lext $(X,d_X)$ and $(Y,d_Y)$ be metric spaces. A map $f: X\rightarrow Y$ such that 
+    \begin{equation}
+        d_Y(f(x),f(x^{'}))=d_X(x,x^{'})
+    \end{equation}
+    for all $x,x^{'}\in X$ is called isometry between $X$ and $Y$. 
+\end{definition}
+
+\begin{definition}
+    \emph{Isometry} is a distance-preserving transformation between metric spaces, usually assumed to be bijective.
+\end{definition}
+
+\begin{example}
+    Conisder the sets $\mathbb{R}^2$ and $\mathbb{C}$, both with Euclidean metric. Then, the map $f: \mathbb{C}\rightarrow \mathbb{R}^2$ defined by $f(a+bi)=(a,b)$, which is isometry. 
+\end{example}
+
+\begin{example}
+    Is $f(x)=x^2$ an isometry on Euclidean distance?
+    $d(3,4)=\sqrt{9+16}=5$ but $d(f(3),f(4))=d(9,16)=\sqrt{81+256}=\sqrt{337}$
+\end{example}
+
+\begin{theorem}
+    Let $(X,d)$ and $(Y,\rho)$ be metric spaces. A function $f:X\rightarrow Y$ is continuous if and only if $f^{-1}(U)$ is open in $X$ whenever $U$ is open in $Y$.
+\end{theorem}
+\begin{proof}
+    Suppose first that $f$ is continuous
+and that $U$ is open in $Y$. If $x\in f^{-1}(U)$, then
+we can find a $y\in U$ with $f(x)=y$. Since $U$ is
+open in $Y$, we can find an $\epsilon>0$ such that
+\[z\in U\ \text{whenever $\rho(y,z)<\epsilon$}.\]
+Since $f$ is continuous, we can find a $\delta>0$
+such that
+\[\rho(y,f(w))=\rho(f(x),f(w))<\epsilon
+\ \text{whenever $d(x,w)<\delta$}.\]
+Thus 
+\[f(w)\in U\ \text{whenever $d(x,w)<\delta$}.\]
+In other words,
+\[w\in f^{-1}(U)\ \text{whenever $d(x,w)<\delta$}.\]
+We have shown that $f^{-1}(U)$ is open.
+
+We now seek the converse result. Suppose that
+$f^{-1}(U)$ is open in $X$ whenever $U$ is open in $Y$.
+Suppose $x\in X$ and $\epsilon>0$. We know that the
+open ball
+\[B(f(x),\epsilon)=\{y\in Y\,:\, \rho(f(x),y)<\epsilon\}\]
+is open. Thus
+$x\in f^{-1}\big(B(f(x),\epsilon)\big)$ and
+$f^{-1}\big(B(f(x),\epsilon)\big)$ is open. It follows that
+there is a $\delta>0$ such that
+\[w\in f^{-1}\big(B(f(x),\epsilon)\big)\ \text{whenever $d(x,w)<\delta$},\]
+so, in other words,
+\[\rho(f(x),f(w))<\epsilon\ \text{whenever $d(x,w)<\delta$}.\]
+Thus $f$ is continuous.
+\end{proof}
+
+\begin{theorem}
+    If $(X,d)$, $(Y,\rho)$, $(Z,\sigma)$ are metric spaces and $g:X\rightarrow Y$, $f:Y\rightarrow Z$ are continuous, then so is the composition $f*g$
+\end{theorem}
+\begin{proof}
+    If $U$ is open in $Z$, then, by continuity, $f^{-1}(U)$ is open in $Y$ and so, by continuity, $(fg)^{-1}(U)=g^{-1}(f^{-1}(U))$ is open in $X$. Thus $f*g$ is continuous. 
+\end{proof}
     
 \end{document}
